@@ -6,6 +6,8 @@ class UniqueInt {
     this.inputFilePath = inputFilePath;
     this.outputFilePath = outputFilePath;
     this.uniqueIntegers = new Set();
+    this.minValue = -1023;
+    this.maxValue = 1023;
   }
 
   async processFile() {
@@ -23,9 +25,14 @@ class UniqueInt {
     const trimmedLine = line.trim();
     if (trimmedLine === "") return;
 
-    const parsedInt = parseInt(trimmedLine, 10);
-    if (!isNaN(parsedInt) && !trimmedLine.match(/\s/)) {
-      this.uniqueIntegers.add(parsedInt);
+    const validNumber = parseInt(trimmedLine, 10);
+    if (
+      !isNaN(validNumber) &&
+      !trimmedLine.match(/\s/) &&
+      validNumber >= this.minValue &&
+      validNumber <= this.maxValue
+    ) {
+      this.uniqueIntegers.add(validNumber);
     }
   }
 
