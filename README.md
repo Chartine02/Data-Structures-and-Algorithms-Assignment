@@ -1,4 +1,4 @@
-# For Matrix
+# Sparse Matrix
 
 ### To test the codes 
 Run the following command in your terminal
